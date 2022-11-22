@@ -1,2 +1,2 @@
 # smaller-ones
-Collection of smaller projects
+Collection of smaller projects.
