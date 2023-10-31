@@ -1,18 +1,15 @@
 package main
 
-import "fmt"
-
-func mergesort(arr []int,mergeArr []int , low, high int) []int {
+func mergesort(arr []int, mergeArr []int, low, high int) []int {
 	if low == high {
 		return arr
 	}
 	p := low + (high - low) / 2
-	
+
 	mergesort(arr, mergeArr, low, p)
 	mergesort(arr, mergeArr, p + 1, high)
 
 	merge(arr, mergeArr, low, p, high)
-	fmt.Println(mergeArr)
 
 	return arr
 }
