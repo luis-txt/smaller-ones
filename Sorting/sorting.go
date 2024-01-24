@@ -1,8 +1,8 @@
 package main
 
-func mergesort(arr []int, mergeArr []int, low, high int) []int {
+func mergesort(arr []int, mergeArr []int, low, high int) {
 	if low == high {
-		return arr
+		return
 	}
 	p := low + (high - low) / 2
 
@@ -10,16 +10,14 @@ func mergesort(arr []int, mergeArr []int, low, high int) []int {
 	mergesort(arr, mergeArr, p + 1, high)
 
 	merge(arr, mergeArr, low, p, high)
-
-	return arr
 }
 
 func merge(arr, mergeArr []int, low, p, high int) {
 	first := low
-	second := p + 1
+	second := p
 
 	i := low
-	for first < p + 1 && second < high + 1 {
+	for first < p && second < high {
 		if arr[first] < arr[second] {
 			mergeArr[i] = arr[first]
 			first++
@@ -29,17 +27,17 @@ func merge(arr, mergeArr []int, low, p, high int) {
 		}
 		i++
 	}
-	for first < p + 1 {
+	for first < p {
 		mergeArr[i] = arr[first]
 		first++
 		i++
 	}
-	for second < high + 1 {
+	for second < high {
 		mergeArr[i] = arr[second]
 		second++
 		i++
 	}
-	for i := low; i < high + 1; i++ {
+	for i := low; i < high; i++ {
 		arr[i] = mergeArr[i]
 	}
 }
